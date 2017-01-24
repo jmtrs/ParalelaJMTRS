@@ -47,7 +47,7 @@ int main(int argc,char *argv[]){
 			for(j=0;j<MATRIZ_DIM;j++){
 				for(k=0;k<MATRIZ_DIM;k++){
 				 //
-				}         
+				}        
 			}  
 		}
 		
