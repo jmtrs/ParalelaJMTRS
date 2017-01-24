@@ -1,7 +1,7 @@
-como usarlo
+How to use git-push-on-save
 
 sudo apt-get update
 sudo apt-get install inotify-tools
 
-chmod +x clone.sh
-./clone.sh
+chmod +x gpos.sh
+./gpos.sh

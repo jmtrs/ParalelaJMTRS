@@ -6,8 +6,8 @@ function refresh {
     $MAINDIRECTORY
 }
 
-SCRIPT=clone.sh          
-function clone {
+SCRIPT=gpos.sh          
+function gpos {
   bash $SCRIPT
 }
 
@@ -17,5 +17,5 @@ git push
 
 
 while refresh; do
-  clone
+  gpos
 done
