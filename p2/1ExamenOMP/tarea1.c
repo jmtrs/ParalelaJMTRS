@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MATRIZ_DIM 40
+#define MATRIZ_DIM 40 
 
 int main(int argc,char *argv[]){
 
@@ -14,7 +14,7 @@ int main(int argc,char *argv[]){
     double *vectaux;
     
     double aux,maximpar,maxpar;
-    int i,j,k,l,ini,fin,tbloque,myrank,nproces,nbloques;
+    int i,j,k,l,ini,fin,tbloque,myrank,nproces;
     nproces=4; 
     
     tbloque=MATRIZ_DIM/nproces;
@@ -56,22 +56,19 @@ int main(int argc,char *argv[]){
 		fin = tbloque * (myrank + 1);
 		for(i=ini;i<fin;i++){
 			for(j=0;j<MATRIZ_DIM;j++){
-				for(k=0;k<MATRIZ_DIM;k++){
-				 //
-				}      
-			}  
+				if (matriz[i][j] > maxpar){
+					maxpar = matriz[i][j];
+				}
+			//printf(" fila: %d, colum: %d v: %lf ",i,j,matriz[i][j]);
+			}
+		//printf("\n"); 
+		i++;
+			
 		}
-		
+		printf(" Max par: %lf",maxpar);
 	} 
 
-	/*	for (i = 0; i<MATRIZ_DIM; i++){
-		 printf ("\nElementos matriz resultado p1 fila %d :\n", i);
-		 for (j = 0; j<MATRIZ_DIM; j++){
-			 printf (" %f ", matriz_resul[i][j]);
-		 }
-		 printf ("\n\n");
-	}	*/
-	
+
 	
 
 	return 0;
