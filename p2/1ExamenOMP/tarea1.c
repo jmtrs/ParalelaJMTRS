@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MATRIZ_DIM 
+#define MATRIZ_DIM 40
 
 int main(int argc,char *argv[]){
 
@@ -32,6 +32,33 @@ int main(int argc,char *argv[]){
     }
 
 		
+
+
+
+
+  printf("3º Todos calculan varios elementos CON automatizador OK\n\n");
+	tini=omp_get_wtime();
+	#pragma omp parallel for num_threads(nproces) default(shared) private(i,j,k)
+	for(i=0;i<MATRIZ_DIM;i++){
+		for(j=0;j<MATRIZ_DIM;j++) {
+			for(k=0;k<MATRIZ_DIM;k++){
+			 
+			}
+		}  
+			
+	}
+
+	tfin=omp_get_wtime();
+	printf("Duracion: %lf\n\n",tfin-tini);
+
+	/*	for (i = 0; i<MATRIZ_DIM; i++){
+		 printf ("\nElementos matriz resultado p3 fila %d :\n", i);
+		 for (j = 0; j<MATRIZ_DIM; j++){
+			 printf (" %f ", matriz_resul[i][j]);
+		 }
+		 printf ("\n\n");
+	}	*/
+	
 	printf("1º Todos los procesos calculan varios elementos SIN automatizador OK \n\n");
 	
 	tini=omp_get_wtime();
@@ -63,33 +90,6 @@ int main(int argc,char *argv[]){
 		 printf ("\n\n");
 	}	*/
 	
-
-
-
-  printf("3º Todos calculan varios elementos CON automatizador OK\n\n");
-	tini=omp_get_wtime();
-	#pragma omp parallel for num_threads(nproces) default(shared) private(i,j,k)
-	for(i=0;i<MATRIZ_DIM;i++){
-		for(j=0;j<MATRIZ_DIM;j++) {
-			for(k=0;k<MATRIZ_DIM;k++){
-			 //matriz_resul[i][j]+= matriz[i][k]*matriz_2[k][j]; 
-			}
-		}  
-			
-	}
-
-	tfin=omp_get_wtime();
-	printf("Duracion: %lf\n\n",tfin-tini);
-
-	/*	for (i = 0; i<MATRIZ_DIM; i++){
-		 printf ("\nElementos matriz resultado p3 fila %d :\n", i);
-		 for (j = 0; j<MATRIZ_DIM; j++){
-			 printf (" %f ", matriz_resul[i][j]);
-		 }
-		 printf ("\n\n");
-	}	*/
-	
-
 	
 
 	return 0;
