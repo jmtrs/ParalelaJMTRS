@@ -5,6 +5,7 @@ function refresh {
     -e modify,move,create,delete \
     $MAINDIRECTORY
 }
+
 SCRIPT=clone.sh          
 function clone {
   bash $SCRIPT
