@@ -15,7 +15,6 @@ git add -A
 git commit -m "jmtrs commit"
 git push
 
-
 while refresh; do
   gpos
 done
