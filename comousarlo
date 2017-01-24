@@ -1,0 +1,7 @@
+como usarlo
+
+sudo apt-get update
+sudo apt-get install inotify-tools
+
+chmod +x clone.sh
+./clone.sh

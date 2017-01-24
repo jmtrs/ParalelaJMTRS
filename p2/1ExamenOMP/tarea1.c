@@ -38,8 +38,8 @@ int main(int argc,char *argv[]){
 	#pragma omp parallel num_threads(nproces) private(myrank,nproces,i,j,k,ini,fin) default(shared)
 	{
 	
-		myrank = omp_get_thread_num();
-		nproces = omp_get_num_threads();
+		myrank = omp_get_thread_num();     
+		nproces = omp_get_num_threads();  
 		tbloque = MATRIZ_DIM/nproces;  
 		ini = tbloque * myrank;
 		fin = tbloque * (myrank + 1);
@@ -47,7 +47,7 @@ int main(int argc,char *argv[]){
 			for(j=0;j<MATRIZ_DIM;j++){
 				for(k=0;k<MATRIZ_DIM;k++){
 				 //
-				}
+				}      
 			}  
 		}
 		
