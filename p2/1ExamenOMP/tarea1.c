@@ -33,10 +33,6 @@ int main(int argc,char *argv[]){
 
 		
 
-
-
-
-  
 	#pragma omp parallel for num_threads(nproces) default(shared) private(i,j,k)
 	for(i=1;i<MATRIZ_DIM;i++){
 		for(j=0;j<MATRIZ_DIM;j++){
