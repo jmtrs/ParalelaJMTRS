@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MATRIZ_DIM  
+#define MATRIZ_DIM 
 
 int main(int argc,char *argv[]){
 
