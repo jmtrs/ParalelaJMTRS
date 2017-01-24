@@ -1,0 +1,2 @@
+# ParalelaJMTRS
+Computación paralela umh
