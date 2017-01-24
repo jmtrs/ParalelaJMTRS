@@ -61,7 +61,7 @@ int main(int argc,char *argv[]){
 				}
 			//printf(" fila: %d, colum: %d v: %lf ",i,j,matriz[i][j]);
 			}
-		//printf("\n"); 
+		//printf("\n");  
 		i++;
 			
 		}
