@@ -1,9 +1,9 @@
 #! /bin/bash
-DIRECTORY_TO_OBSERVE=$(dirname "$0")   
+E=$(dirname "$0")   
 function block_for_change {
   inotifywait -r \
     -e modify,move,create,delete \
-    $DIRECTORY_TO_OBSERVE
+    $E
 }
 BUILD_SCRIPT=clone.sh          
 function clone {
