@@ -13,7 +13,7 @@ function clone {
 git add -A
 git commit -m "jmtrs commit"
 git push
-
+echo
 while block_for_change; do
   clone
 done
