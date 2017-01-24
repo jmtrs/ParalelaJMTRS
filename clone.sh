@@ -1,13 +1,13 @@
 #! /bin/bash
-E=$(dirname "$0")   
-function block_for_change {
+MAINDIRECTORY=$(dirname "$0")   
+function refresh {
   inotifywait -r \
     -e modify,move,create,delete \
-    $E
+    $MAINDIRECTORY
 }
-BUILD_SCRIPT=clone.sh          
+SCRIPT=clone.sh          
 function clone {
-  bash $BUILD_SCRIPT
+  bash $SCRIPT
 }
 
 git add -A
@@ -15,6 +15,6 @@ git commit -m "jmtrs commit"
 git push
 
 
-while block_for_change; do
+while refresh; do
   clone
 done
