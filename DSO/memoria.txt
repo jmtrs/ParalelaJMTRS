@@ -1,0 +1,53 @@
+____________________________ MICP ____________________________
+
+Este programa C es una simulación del comando de copia "cp" de Linux. El comando copy se puede utilizar para hacer una copia de sus archivos y directorios,
+pero aquí en esta implementación sólo se maneja la funcionalidad básica, es decir, copiar el contenido de un archivo a otro.
+
+El programa para el comando "micp" toma dos argumentos, el archivo de origen y el archivo de destino.
+
+./micp [archivo_origen] [archivo_destino]
+
+1) Primero se comprueba si los archivos de origen y de destino se reciben de la línea de comandos y sale si el contador de argc no es igual a 3.
+También hay una comprobación para manejar la opción "--help" para imprimir el uso de micp.
+
+2) Se abre el archivo de origen con el indicador de sólo lectura establecido.
+
+3) Se abre el archivo de destino con los indicadores y se aplican los permisos.
+O_WRONLY -> Abrir el archivo en modo de sólo escritura
+O_TRUNC -> Reemplaza el contenido del archivo existente
+O_CREAT -> Crea un nuevo archivo si no existe
+
+S_IXUSR son permisos de archivo para el usuario actual ('X' puede ser R para leer y W para escribir)
+S_IXGRP son permisos de archivo para los grupos ('X' puede ser R para leer y W para escribir)
+S_IXOTH son permisos de archivo para otros usuarios ('X' puede ser R para leer y W para escribir)
+
+4) Se inicia la transferencia de datos del archivo de origen al archivo de destino hasta que alcance EOF (leerbuf == 0).
+
+
+____________________________ MILS ____________________________
+
+Este programa C es una simulación del comando de listar "ls" de Linux. El comando listar se puede utilizar para ver los diferentes archivos que existen dentro
+de un directorio, en esta implementación sólo se maneja la funcionalidad básica, es decir, mostrar los archivos y directorios, mostrar tambien los ocultos con . o .. 
+y mostrar distintos atributos con -l.
+
+Uso: ./micp -[al] [Archivo || Carpeta]
+-a, --all          No ignora los archivos con . o ..
+-l, --listar       listar mostrando informacion
+--help             informacion
+
+1) Se empieza recopilando los tokens que ha introducido el usuario, en el caso de ser erroneos, se le muestra un mensaje de error.
+desde leerTokens se comprueba gracias a la libreria getopt.h las diferentes oficones que se han creado, un usuario puede tanto ver todos los archivos
+con -a y listar mostrando información con -l al mismo tiempo, y gracias a la struct linea vamos actualizando estos atributos, en esta parte tambien 
+se guarda la cantidad de directorios y archivos que se van a mostrar para posteriormente reservar la memoria.
+
+2) despues se clasifica cada token segun si es un archvo o un directorio, sabemos si es es un directorio gracias a S_ISDIR por la libreria del sistema
+stat.h.
+
+3) Se ordenan alfabeticamente las carpetas y los archivos mediante qsort.
+
+4) Se leen archivos y directorios, en el caso de los archivos es algo más sencillo, para cada archivo y en el caso de que no tengamos que saltarnos por
+haber activado -a, despues de comprobar que tengamos acceso, imprimimos, para imprimir en el caso de tener activado -l lo hacemos mostrando los diferentes atributos
+con st_ino mostramos el numero de serie o ID, despues mostramos el tipo de archivo, que hemos calsificado anteriormente en la función file_mode, despues el usuario principal del archivo,
+el grupo al que pertenece, el tamaño clasificado en kb mb o gb y la hora de ultimo acceso, y por supuesto el nombre,en caso contrario solo se muestra el nombre.
+Para leer un directorio se busca el directorio que se desea listar y se le asignar nuevos valores a los files para reemplazar los anteriores ya que son los por defecto,
+se leen estos archivos y se imprimen.
